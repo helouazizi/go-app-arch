@@ -1,8 +1,6 @@
 package main
 
-import "fmt"
-
-
-func main(){
-	fmt.Sprintln("hi api")
+func main() {
+	server := NewApiServer(":8080")
+	server.Run()
 }
