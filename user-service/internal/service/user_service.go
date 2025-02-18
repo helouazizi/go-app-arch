@@ -23,10 +23,14 @@ func (us *UserService) CreateUser(name, email string) (*model.User, error) {
 	return us.repo.CreateUser(name, email)
 }
 
-func (us *UserService) GetUserByID(id int64) (*model.User, error) {
+func (us *UserService) GetUserByID(id int) (*model.User, error) {
 	return us.repo.GetUserByID(id)
 }
 
-func (us *UserService) ListUsers() ([]*model.User, error) {
+func (us *UserService) ListUsers() (*map[int]*model.User, error) {
 	return us.repo.ListUsers()
+}
+
+func (us *UserService) UpdateUser(id int, name string) (*model.User, error) {
+	return us.repo.UpdateUser(id, name)
 }
