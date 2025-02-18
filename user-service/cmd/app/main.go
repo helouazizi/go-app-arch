@@ -20,7 +20,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/users", userHandler.CreateUser).Methods("POST")
 	r.HandleFunc("/users", userHandler.ListUsers).Methods("GET")
-	r.HandleFunc("/users/{id:[0-9]+}", userHandler.GetUser).Methods("GET")
+	//r.HandleFunc("/users/{id:[0-9]+}", userHandler.GetUser).Methods("GET")
 
 	fmt.Println("Server is running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
