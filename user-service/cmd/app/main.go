@@ -13,7 +13,7 @@ import (
 
 func main() {
 	// Repository implementation (stub for now)
-	repo := &repository.InMemoryUserRepository{}
+	repo := repository.NewInMemoryUserRepo()
 	userService := service.NewUserService(repo)
 	userHandler := api.NewUserHandler(userService)
 
@@ -21,6 +21,7 @@ func main() {
 	r.HandleFunc("/users", userHandler.CreateUser).Methods("POST")
 	r.HandleFunc("/users", userHandler.ListUsers).Methods("GET")
 	//r.HandleFunc("/users/{id:[0-9]+}", userHandler.GetUser).Methods("GET")
+	r.HandleFunc("/users/update", userHandler.UpdateUser).Methods("PUT")
 
 	fmt.Println("Server is running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
