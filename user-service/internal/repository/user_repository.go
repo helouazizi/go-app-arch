@@ -25,12 +25,16 @@ func (repo *InMemoryUserRepository) CreateUser(name, email string) (*model.User,
 }
 
 func (repo *InMemoryUserRepository) GetUserByID(id int64) (*model.User, error) {
-	for _, user := range repo.users {
+	/*for _, user := range repo.users {
 		if user.ID == id {
 			return user, nil
 		}
+	}*/
+	user := repo.users[id]
+	if user == nil {
+		return nil, fmt.Errorf("user not found")
 	}
-	return nil, fmt.Errorf("user not found")
+	return user, nil
 }
 
 func (repo *InMemoryUserRepository) ListUsers() ([]*model.User, error) {
