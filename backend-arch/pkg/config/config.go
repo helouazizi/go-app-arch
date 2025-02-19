@@ -35,6 +35,7 @@ func LoadConfig() *Configuration {
 		Port:    port,
 		DB_PATH: db_path,
 	}
+	
 }
 
 func loadEnvFile(filepath string) error {
